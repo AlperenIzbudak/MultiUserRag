@@ -88,7 +88,8 @@ x-docling: &service-docling
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: pgvector/pgvector:pg16
+    container_name: postgres1
     hostname: postgres
     networks: ['demo']
     restart: unless-stopped
@@ -98,6 +99,7 @@ services:
       - POSTGRES_DB
     volumes:
       - postgres_storage:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
       interval: 5s
@@ -178,7 +180,7 @@ services:
       sh -c "echo 'server {
         listen 80;
         root /usr/share/nginx/html;
-        index chat.html;
+        index index.html;
         autoindex on;
         location / {
           try_files \$$uri \$$uri/ =404;

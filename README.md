@@ -29,6 +29,10 @@ store with an comprehensive API
 ✅ [**PostgreSQL**](https://www.postgresql.org/) -  Workhorse of the Data
 Engineering world, handles large amounts of data safely.
 
+✅ **Multi-tenant RAG schema** - PostgreSQL runs with pgvector and includes a
+tenant/group/user/chat-aware document and chunk model. See
+[docs/multi-tenant-rag.md](docs/multi-tenant-rag.md).
+
 ✅ [**Docling**](https://www.docling.ai/) - OCR and document parsing service for extracting structured data from documents
 
 ✅ **Static File Server** - Nginx-based file server that serves the shared folder, accessible at http://localhost:8080
